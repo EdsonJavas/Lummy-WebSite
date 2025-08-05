@@ -21,39 +21,50 @@
     <link rel="icon" type="image/png" href="assets/images/favicon.png">
 </head>
 <body>
-    <!-- Navigation -->
-    <nav class="navbar navbar-expand-lg navbar-light fixed-top custom-navbar">
-        <div class="container">
-            <a class="navbar-brand" href="#home">
-                <span class="logo-text">
-                    <span class="logo-lu">Lu</span><span class="logo-m1">m</span><span class="logo-m2">m</span><span class="logo-y">y</span>
-                </span>
-            </a>
+    <!-- Professional Navigation -->
+<nav class="navbar navbar-expand-lg navbar-dark professional-navbar fixed-top" id="mainNavbar">
+    <div class="container-fluid px-3 px-lg-5">
+        <!-- Logo -->
+        <a class="navbar-brand" href="#home">
+            <span class="logo-text">
+                <span class="logo-lu">Lu</span><span class="logo-m1">m</span><span class="logo-m2">m</span><span class="logo-y">y</span>
+            </span>
+        </a>
+        
+        <!-- Mobile Toggle -->
+        <button class="navbar-toggler" type="button" data-bs-toggle="collapse" data-bs-target="#navbarNav" aria-controls="navbarNav" aria-expanded="false" aria-label="Toggle navigation">
+            <span class="navbar-toggler-icon"></span>
+        </button>
+        
+        <!-- Navigation Menu -->
+        <div class="collapse navbar-collapse" id="navbarNav">
+            <ul class="navbar-nav me-auto">
+                <li class="nav-item">
+                    <a class="nav-link active" href="#home" data-section="home">Início</a>
+                </li>
+                <li class="nav-item">
+                    <a class="nav-link" href="#features" data-section="features">Recursos</a>
+                </li>
+                <li class="nav-item">
+                    <a class="nav-link" href="#screenshots" data-section="screenshots">Capturas</a>
+                </li>
+                <li class="nav-item">
+                    <a class="nav-link" href="#download" data-section="download">Download</a>
+                </li>
+            </ul>
             
-            <button class="navbar-toggler" type="button" data-bs-toggle="collapse" data-bs-target="#navbarNav">
-                <span class="navbar-toggler-icon"></span>
-            </button>
-            
-            <div class="collapse navbar-collapse" id="navbarNav">
-                <ul class="navbar-nav ms-auto">
-                    <li class="nav-item">
-                        <a class="nav-link" href="#home">Início</a>
-                    </li>
-                    <li class="nav-item">
-                        <a class="nav-link" href="#features">Recursos</a>
-                    </li>
-                    <li class="nav-item">
-                        <a class="nav-link" href="#screenshots">Capturas</a>
-                    </li>
-                    <li class="nav-item">
-                        <a class="nav-link" href="#download">Download</a>
-                    </li>
-                </ul>
+            <!-- Download Button -->
+            <div class="navbar-nav">
+                <a class="btn btn-download-nav" href="#download">
+                    <i class="fas fa-download me-2"></i>
+                    Baixar App
+                </a>
             </div>
         </div>
-    </nav>
+    </div>
+</nav>
 
-    <!-- Hero Section -->
+    <!-- Hero Section with proper padding-top -->
     <section id="home" class="hero-section">
         <div class="hero-background">
             <div class="floating-elements">
@@ -66,52 +77,66 @@
             </div>
         </div>
         
-        <div class="container">
-            <div class="row align-items-center min-vh-100">
-                <div class="col-lg-6 hero-content">
-                    <div class="hero-badge">
+        <div class="container-fluid px-3 px-lg-5">
+            <div class="row align-items-center min-vh-100 g-4">
+                <div class="col-12 col-lg-6 hero-content order-2 order-lg-1">
+                    <div class="hero-badge mb-3 mb-md-4">
                         <i class="fas fa-star"></i>
                         <span>Educação Financeira Lúdica</span>
                     </div>
                     
-                    <h1 class="hero-title">
-                        Ensine <span class="highlight">educação financeira</span> 
+                    <h1 class="hero-title mb-3 mb-md-4">
+                        Ensine <span class="highlight">educação financeira</span>
                         para crianças de forma <span class="highlight-2">divertida!</span>
                     </h1>
                     
-                    <p class="hero-description">
-                        O Lummy transforma o aprendizado sobre dinheiro em uma aventura emocionante! 
+                    <p class="hero-description mb-4">
+                        O Lummy transforma o aprendizado sobre dinheiro em uma aventura emocionante!
                         Seu filho aprenderá a poupar, controlar gastos e definir metas de forma lúdica e interativa.
                     </p>
                     
-                    <div class="hero-stats">
-                        <div class="stat-item">
-                            <div class="stat-number">10K+</div>
-                            <div class="stat-label">Crianças Aprendendo</div>
-                        </div>
-                        <div class="stat-item">
-                            <div class="stat-number">95%</div>
-                            <div class="stat-label">Pais Satisfeitos</div>
-                        </div>
-                        <div class="stat-item">
-                            <div class="stat-number">4.9★</div>
-                            <div class="stat-label">Avaliação</div>
+                    <div class="hero-stats mb-4 mb-md-5">
+                        <div class="row g-3 text-center">
+                            <div class="col-4">
+                                <div class="stat-item">
+                                    <div class="stat-number">10K+</div>
+                                    <div class="stat-label">Crianças Aprendendo</div>
+                                </div>
+                            </div>
+                            <div class="col-4">
+                                <div class="stat-item">
+                                    <div class="stat-number">95%</div>
+                                    <div class="stat-label">Pais Satisfeitos</div>
+                                </div>
+                            </div>
+                            <div class="col-4">
+                                <div class="stat-item">
+                                    <div class="stat-number">4.9★</div>
+                                    <div class="stat-label">Avaliação</div>
+                                </div>
+                            </div>
                         </div>
                     </div>
                     
                     <div class="hero-buttons">
-                        <a href="#download" class="btn btn-primary btn-download">
-                            <i class="fab fa-android"></i>
-                            Baixar APK Grátis
-                        </a>
-                        <a href="#features" class="btn btn-outline-primary btn-learn">
-                            <i class="fas fa-play-circle"></i>
-                            Ver Recursos
-                        </a>
+                        <div class="row g-3">
+                            <div class="col-12 col-sm-auto">
+                                <a href="#download" class="btn btn-primary btn-download w-100">
+                                    <i class="fab fa-android me-2"></i>
+                                    Baixar APK Grátis
+                                </a>
+                            </div>
+                            <div class="col-12 col-sm-auto">
+                                <a href="#features" class="btn btn-outline-primary btn-learn w-100">
+                                    <i class="fas fa-play-circle me-2"></i>
+                                    Ver Recursos
+                                </a>
+                            </div>
+                        </div>
                     </div>
                 </div>
                 
-                <div class="col-lg-6 hero-image">
+                <div class="col-12 col-lg-6 hero-image order-1 order-lg-2 text-center">
                     <div class="phone-mockup">
                         <div class="phone-frame">
                             <div class="phone-screen">
@@ -127,9 +152,9 @@
 
     <!-- Features Section -->
     <section id="features" class="features-section">
-        <div class="container">
+        <div class="container-fluid px-3 px-lg-5">
             <div class="row">
-                <div class="col-lg-8 mx-auto text-center">
+                <div class="col-12 col-lg-8 mx-auto text-center">
                     <h2 class="section-title">Por que escolher o Lummy?</h2>
                     <p class="section-description">
                         Desenvolvido especialmente para tornar a educação financeira acessível e divertida para crianças e jovens
@@ -137,9 +162,9 @@
                 </div>
             </div>
             
-            <div class="row g-4 mt-5">
-                <div class="col-lg-4 col-md-6">
-                    <div class="feature-card">
+            <div class="row g-4 mt-3 mt-md-5">
+                <div class="col-12 col-md-6 col-lg-4">
+                    <div class="feature-card h-100">
                         <div class="feature-icon">
                             <i class="fas fa-piggy-bank"></i>
                         </div>
@@ -148,8 +173,8 @@
                     </div>
                 </div>
                 
-                <div class="col-lg-4 col-md-6">
-                    <div class="feature-card">
+                <div class="col-12 col-md-6 col-lg-4">
+                    <div class="feature-card h-100">
                         <div class="feature-icon">
                             <i class="fas fa-target"></i>
                         </div>
@@ -158,8 +183,8 @@
                     </div>
                 </div>
                 
-                <div class="col-lg-4 col-md-6">
-                    <div class="feature-card">
+                <div class="col-12 col-md-6 col-lg-4">
+                    <div class="feature-card h-100">
                         <div class="feature-icon">
                             <i class="fas fa-trophy"></i>
                         </div>
@@ -168,8 +193,8 @@
                     </div>
                 </div>
                 
-                <div class="col-lg-4 col-md-6">
-                    <div class="feature-card">
+                <div class="col-12 col-md-6 col-lg-4">
+                    <div class="feature-card h-100">
                         <div class="feature-icon">
                             <i class="fas fa-chart-line"></i>
                         </div>
@@ -178,8 +203,8 @@
                     </div>
                 </div>
                 
-                <div class="col-lg-4 col-md-6">
-                    <div class="feature-card">
+                <div class="col-12 col-md-6 col-lg-4">
+                    <div class="feature-card h-100">
                         <div class="feature-icon">
                             <i class="fas fa-graduation-cap"></i>
                         </div>
@@ -188,8 +213,8 @@
                     </div>
                 </div>
                 
-                <div class="col-lg-4 col-md-6">
-                    <div class="feature-card">
+                <div class="col-12 col-md-6 col-lg-4">
+                    <div class="feature-card h-100">
                         <div class="feature-icon">
                             <i class="fas fa-shield-alt"></i>
                         </div>
@@ -203,9 +228,9 @@
 
     <!-- Screenshots Section -->
     <section id="screenshots" class="screenshots-section">
-        <div class="container">
+        <div class="container-fluid px-3 px-lg-5">
             <div class="row">
-                <div class="col-lg-8 mx-auto text-center">
+                <div class="col-12 col-lg-8 mx-auto text-center">
                     <h2 class="section-title">Veja o Lummy em ação</h2>
                     <p class="section-description">
                         Interface intuitiva e colorida, desenvolvida especialmente para crianças
@@ -213,30 +238,38 @@
                 </div>
             </div>
             
-            <div class="row mt-5">
+            <div class="row mt-4 mt-md-5 justify-content-center">
                 <div class="col-12">
                     <div class="screenshots-carousel">
-                        <div class="screenshot-item">
-                            <img src="https://hebbkx1anhila5yf.public.blob.vercel-storage.com/Lum%202-0CkW5uvZjaDxIjCSextrqE198N99r7.png" alt="Tela Principal" class="screenshot-img">
-                            <div class="screenshot-overlay">
-                                <h5>Tela Principal</h5>
-                                <p>Cofrinho digital e metas</p>
+                        <div class="row g-4 justify-content-center">
+                            <div class="col-12 col-sm-6 col-lg-4">
+                                <div class="screenshot-item">
+                                    <img src="https://hebbkx1anhila5yf.public.blob.vercel-storage.com/Lum%202-0CkW5uvZjaDxIjCSextrqE198N99r7.png" alt="Tela Principal" class="screenshot-img">
+                                    <div class="screenshot-overlay">
+                                        <h5>Tela Principal</h5>
+                                        <p>Cofrinho digital e metas</p>
+                                    </div>
+                                </div>
                             </div>
-                        </div>
-                        
-                        <div class="screenshot-item">
-                            <img src="https://hebbkx1anhila5yf.public.blob.vercel-storage.com/fotocriancafodase%201-MFp8K8GLj7deZeGCFVqMJVDVgEtfsc.png" alt="Perfil" class="screenshot-img">
-                            <div class="screenshot-overlay">
-                                <h5>Perfil do Usuário</h5>
-                                <p>Conquistas e estatísticas</p>
+                            
+                            <div class="col-12 col-sm-6 col-lg-4">
+                                <div class="screenshot-item">
+                                    <img src="https://hebbkx1anhila5yf.public.blob.vercel-storage.com/fotocriancafodase%201-MFp8K8GLj7deZeGCFVqMJVDVgEtfsc.png" alt="Perfil" class="screenshot-img">
+                                    <div class="screenshot-overlay">
+                                        <h5>Perfil do Usuário</h5>
+                                        <p>Conquistas e estatísticas</p>
+                                    </div>
+                                </div>
                             </div>
-                        </div>
-                        
-                        <div class="screenshot-item">
-                            <img src="https://hebbkx1anhila5yf.public.blob.vercel-storage.com/Design%20sem%20nome%20%281%29-3cva84Hcw1yVzTEgDHAc16jDZNkolI.svg" alt="Configuração" class="screenshot-img">
-                            <div class="screenshot-overlay">
-                                <h5>Configuração</h5>
-                                <p>Personalize sua experiência</p>
+                            
+                            <div class="col-12 col-sm-6 col-lg-4">
+                                <div class="screenshot-item">
+                                    <img src="https://hebbkx1anhila5yf.public.blob.vercel-storage.com/Design%20sem%20nome%20%281%29-3cva84Hcw1yVzTEgDHAc16jDZNkolI.svg" alt="Configuração" class="screenshot-img">
+                                    <div class="screenshot-overlay">
+                                        <h5>Configuração</h5>
+                                        <p>Personalize sua experiência</p>
+                                    </div>
+                                </div>
                             </div>
                         </div>
                     </div>
@@ -247,15 +280,15 @@
 
     <!-- Download Section -->
     <section id="download" class="download-section">
-        <div class="container">
-            <div class="row align-items-center">
-                <div class="col-lg-6">
+        <div class="container-fluid px-3 px-lg-5">
+            <div class="row align-items-center g-4">
+                <div class="col-12 col-lg-6 order-2 order-lg-1">
                     <div class="download-content">
                         <h2 class="download-title">
                             Pronto para começar a <span class="highlight">aventura financeira?</span>
                         </h2>
                         <p class="download-description">
-                            Baixe o Lummy gratuitamente e comece a ensinar educação financeira 
+                            Baixe o Lummy gratuitamente e comece a ensinar educação financeira
                             para seu filho de forma divertida e interativa!
                         </p>
                         
@@ -274,8 +307,8 @@
                             </div>
                         </div>
                         
-                        <div class="download-buttons">
-                            <button class="btn btn-primary btn-download-main" onclick="downloadAPK()">
+                        <div class="download-buttons mb-3">
+                            <button class="btn btn-primary btn-download-main w-100 w-sm-auto" onclick="downloadAPK()">
                                 <i class="fab fa-android"></i>
                                 <div class="btn-content">
                                     <span class="btn-text">Baixar para Android</span>
@@ -293,7 +326,7 @@
                     </div>
                 </div>
                 
-                <div class="col-lg-6">
+                <div class="col-12 col-lg-6 order-1 order-lg-2 text-center">
                     <div class="download-visual">
                         <div class="download-phone">
                             <img src="https://hebbkx1anhila5yf.public.blob.vercel-storage.com/astronauta-lummy-OXK8DpNpgdSxKxNZKtIyQynALBlh6n.svg" alt="Lummy App Download" class="download-app-image">
@@ -306,21 +339,21 @@
 
     <!-- Footer -->
     <footer class="footer">
-        <div class="container">
-            <div class="row">
-                <div class="col-lg-4">
+        <div class="container-fluid px-3 px-lg-5">
+            <div class="row g-4">
+                <div class="col-12 col-md-6 col-lg-4">
                     <div class="footer-brand">
                         <span class="logo-text">
                             <span class="logo-lu">Lu</span><span class="logo-m1">m</span><span class="logo-m2">m</span><span class="logo-y">y</span>
                         </span>
                         <p class="footer-description">
-                            Educação financeira lúdica para crianças e jovens. 
+                            Educação financeira lúdica para crianças e jovens.
                             Transformando o aprendizado sobre dinheiro em diversão!
                         </p>
                     </div>
                 </div>
                 
-                <div class="col-lg-2 col-md-6">
+                <div class="col-6 col-md-3 col-lg-2">
                     <h5 class="footer-title">Produto</h5>
                     <ul class="footer-links">
                         <li><a href="#features">Recursos</a></li>
@@ -329,7 +362,7 @@
                     </ul>
                 </div>
                 
-                <div class="col-lg-2 col-md-6">
+                <div class="col-6 col-md-3 col-lg-2">
                     <h5 class="footer-title">Suporte</h5>
                     <ul class="footer-links">
                         <li><a href="#help">Ajuda</a></li>
@@ -338,7 +371,7 @@
                     </ul>
                 </div>
                 
-                <div class="col-lg-4">
+                <div class="col-12 col-lg-4">
                     <h5 class="footer-title">Fique por dentro</h5>
                     <p class="footer-newsletter-text">
                         Receba novidades sobre educação financeira infantil
@@ -356,13 +389,13 @@
             
             <hr class="footer-divider">
             
-            <div class="row align-items-center">
-                <div class="col-md-6">
-                    <p class="footer-copyright">
+            <div class="row align-items-center g-3">
+                <div class="col-12 col-md-6 text-center text-md-start">
+                    <p class="footer-copyright mb-0">
                         © 2024 Lummy. Todos os direitos reservados.
                     </p>
                 </div>
-                <div class="col-md-6 text-md-end">
+                <div class="col-12 col-md-6 text-center text-md-end">
                     <div class="footer-social">
                         <a href="#" class="social-link"><i class="fab fa-facebook-f"></i></a>
                         <a href="#" class="social-link"><i class="fab fa-instagram"></i></a>

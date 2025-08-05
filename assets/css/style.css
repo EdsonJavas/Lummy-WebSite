@@ -10,6 +10,7 @@ body {
   line-height: 1.6;
   color: #1e293b;
   overflow-x: hidden;
+  /* Removido padding-top */
 }
 
 /* Custom Properties */
@@ -18,6 +19,7 @@ body {
   --primary-orange: #ff8c42;
   --secondary-blue: #357abd;
   --dark-blue: #003092;
+  --darker-blue: #002066;
   --light-blue: #f8fbff;
   --text-dark: #1e293b;
   --text-light: #64748b;
@@ -29,13 +31,13 @@ body {
 /* Logo Styles */
 .logo-text {
   font-family: "Paytone One", cursive;
-  font-size: 2rem;
+  font-size: 1.8rem;
   font-weight: 400;
+  text-shadow: none;
 }
 
-.logo-lu,
-.logo-y {
-  color: #000;
+.logo-lu {
+  color: #ffffff;
 }
 
 .logo-m1 {
@@ -43,35 +45,175 @@ body {
 }
 
 .logo-m2 {
-  color: var(--dark-blue);
+  color: var(--dark-blue); /* Azul escuro como solicitado */
 }
 
-/* Navigation */
-.custom-navbar {
-  background: rgba(255, 255, 255, 0.95);
-  backdrop-filter: blur(10px);
-  box-shadow: 0 2px 20px rgba(0, 0, 0, 0.1);
+.logo-y {
+  color: #ffffff;
+}
+
+/* Professional Navigation */
+.professional-navbar {
+  background: var(--dark-blue);
+  box-shadow: 0 2px 10px rgba(0, 0, 0, 0.1);
   transition: all 0.3s ease;
-  padding: 1rem 0;
+  padding: 0.75rem 0;
+  height: 64px;
+  z-index: 1050;
 }
 
+.professional-navbar.scrolled {
+  background: var(--darker-blue);
+  box-shadow: 0 2px 15px rgba(0, 0, 0, 0.15);
+  padding: 0.6rem 0;
+}
+
+.navbar-brand {
+  transition: transform 0.2s ease;
+  margin-right: 2rem;
+}
+
+.navbar-brand:hover {
+  transform: scale(1.02);
+}
+
+/* Navigation Links */
 .navbar-nav .nav-link {
   font-weight: 500;
-  color: var(--text-dark) !important;
+  color: rgba(255, 255, 255, 0.9) !important;
   margin: 0 0.5rem;
-  transition: color 0.3s ease;
+  padding: 0.5rem 1rem !important;
+  border-radius: 6px;
+  transition: all 0.2s ease;
+  position: relative;
 }
 
 .navbar-nav .nav-link:hover {
-  color: var(--primary-blue) !important;
+  color: #ffffff !important;
+  background: rgba(255, 255, 255, 0.1);
 }
 
-/* Hero Section */
+.navbar-nav .nav-link:focus {
+  outline: 2px solid rgba(255, 255, 255, 0.3);
+  outline-offset: 2px;
+}
+
+/* Active Link Indicator */
+.navbar-nav .nav-link.active {
+  color: #ffffff !important;
+  background: rgba(255, 255, 255, 0.15);
+  font-weight: 600;
+}
+
+.navbar-nav .nav-link.active::after {
+  content: "";
+  position: absolute;
+  bottom: 0;
+  left: 50%;
+  transform: translateX(-50%);
+  width: 20px;
+  height: 2px;
+  background: var(--primary-orange);
+  border-radius: 1px;
+}
+
+/* Professional Download Button */
+.btn-download-nav {
+  background: var(--primary-orange);
+  color: white !important;
+  border: none;
+  padding: 0.6rem 1.5rem;
+  border-radius: 6px;
+  font-weight: 600;
+  font-size: 0.9rem;
+  text-decoration: none;
+  transition: all 0.2s ease;
+  display: inline-flex;
+  align-items: center;
+  margin-left: 1rem;
+}
+
+.btn-download-nav:hover {
+  background: #e67a35;
+  color: white !important;
+  transform: translateY(-1px);
+  box-shadow: 0 4px 12px rgba(255, 140, 66, 0.3);
+}
+
+.btn-download-nav:focus {
+  outline: 2px solid rgba(255, 255, 255, 0.3);
+  outline-offset: 2px;
+}
+
+/* Mobile Navbar */
+.navbar-toggler {
+  border: 1px solid rgba(255, 255, 255, 0.2);
+  padding: 0.4rem 0.6rem;
+}
+
+.navbar-toggler:hover {
+  border-color: rgba(255, 255, 255, 0.3);
+}
+
+.navbar-toggler:focus {
+  box-shadow: 0 0 0 2px rgba(255, 255, 255, 0.2);
+}
+
+@media (max-width: 991.98px) {
+  .professional-navbar {
+    height: auto;
+    min-height: 64px;
+  }
+
+  .navbar-collapse {
+    background: var(--darker-blue);
+    margin-top: 1rem;
+    padding: 1.5rem;
+    border-radius: 8px;
+    box-shadow: 0 4px 20px rgba(0, 0, 0, 0.2);
+  }
+
+  .navbar-nav .nav-link {
+    margin: 0.2rem 0;
+    padding: 0.8rem 1rem !important;
+    text-align: center;
+  }
+
+  .btn-download-nav {
+    margin: 1rem auto 0;
+    width: fit-content;
+    display: flex;
+    justify-content: center;
+  }
+}
+
+@media (max-width: 768px) {
+  .logo-text {
+    font-size: 1.6rem;
+  }
+  
+  .navbar-brand {
+    margin-right: 1rem;
+  }
+}
+
+@media (max-width: 576px) {
+  .logo-text {
+    font-size: 1.4rem;
+  }
+  
+  .professional-navbar {
+    padding: 0.6rem 0;
+  }
+}
+
+/* Hero Section - Adjusted for fixed navbar */
 .hero-section {
   position: relative;
   min-height: 100vh;
   background: linear-gradient(135deg, var(--primary-blue) 0%, var(--secondary-blue) 100%);
   overflow: hidden;
+  padding-top: 64px; /* Apenas o espaço da navbar */
 }
 
 .hero-background {
@@ -91,7 +233,7 @@ body {
 
 .floating-coin {
   position: absolute;
-  font-size: 2rem;
+  font-size: 1.5rem;
   animation: float 6s ease-in-out infinite;
   opacity: 0.7;
 }
@@ -101,26 +243,31 @@ body {
   left: 10%;
   animation-delay: 0s;
 }
+
 .coin-2 {
   top: 20%;
   right: 15%;
   animation-delay: 1s;
 }
+
 .coin-3 {
   top: 60%;
   left: 5%;
   animation-delay: 2s;
 }
+
 .coin-4 {
   top: 70%;
   right: 10%;
   animation-delay: 3s;
 }
+
 .coin-5 {
   top: 30%;
   left: 80%;
   animation-delay: 4s;
 }
+
 .coin-6 {
   top: 80%;
   left: 70%;
@@ -151,7 +298,6 @@ body {
   border-radius: 50px;
   font-size: 0.9rem;
   font-weight: 500;
-  margin-bottom: 1.5rem;
   backdrop-filter: blur(10px);
 }
 
@@ -161,10 +307,9 @@ body {
 }
 
 .hero-title {
-  font-size: 3.5rem;
+  font-size: 2.5rem;
   font-weight: 800;
   line-height: 1.2;
-  margin-bottom: 1.5rem;
 }
 
 .highlight {
@@ -180,37 +325,24 @@ body {
 }
 
 .hero-description {
-  font-size: 1.2rem;
-  margin-bottom: 2rem;
+  font-size: 1.1rem;
   opacity: 0.9;
   line-height: 1.6;
 }
 
-.hero-stats {
-  display: flex;
-  gap: 2rem;
-  margin-bottom: 2.5rem;
-}
-
-.stat-item {
+.hero-stats .stat-item {
   text-align: center;
 }
 
 .stat-number {
-  font-size: 2rem;
+  font-size: 1.8rem;
   font-weight: 700;
   color: var(--primary-orange);
 }
 
 .stat-label {
-  font-size: 0.9rem;
+  font-size: 0.8rem;
   opacity: 0.8;
-}
-
-.hero-buttons {
-  display: flex;
-  gap: 1rem;
-  flex-wrap: wrap;
 }
 
 .btn-download {
@@ -253,14 +385,14 @@ body {
 
 .phone-mockup {
   position: relative;
-  max-width: 400px;
+  max-width: 300px;
   margin: 0 auto;
 }
 
 .phone-frame {
   background: #1a1a1a;
   border-radius: 40px;
-  padding: 20px;
+  padding: 15px;
   box-shadow: 0 20px 60px rgba(0, 0, 0, 0.3);
   position: relative;
   z-index: 2;
@@ -308,12 +440,12 @@ body {
 
 /* Features Section */
 .features-section {
-  padding: 100px 0;
+  padding: 80px 0;
   background: var(--light-blue);
 }
 
 .section-title {
-  font-size: 2.5rem;
+  font-size: 2.2rem;
   font-weight: 700;
   margin-bottom: 1rem;
   color: var(--text-dark);
@@ -327,12 +459,11 @@ body {
 
 .feature-card {
   background: white;
-  padding: 2.5rem 2rem;
+  padding: 2rem 1.5rem;
   border-radius: 20px;
   text-align: center;
   box-shadow: 0 10px 30px rgba(0, 0, 0, 0.1);
   transition: all 0.3s ease;
-  height: 100%;
   border: 1px solid rgba(74, 144, 226, 0.1);
 }
 
@@ -342,20 +473,20 @@ body {
 }
 
 .feature-icon {
-  width: 80px;
-  height: 80px;
+  width: 70px;
+  height: 70px;
   background: linear-gradient(45deg, var(--primary-blue), var(--secondary-blue));
   border-radius: 20px;
   display: flex;
   align-items: center;
   justify-content: center;
   margin: 0 auto 1.5rem;
-  font-size: 2rem;
+  font-size: 1.8rem;
   color: white;
 }
 
 .feature-card h4 {
-  font-size: 1.3rem;
+  font-size: 1.2rem;
   font-weight: 600;
   margin-bottom: 1rem;
   color: var(--text-dark);
@@ -364,29 +495,30 @@ body {
 .feature-card p {
   color: var(--text-light);
   line-height: 1.6;
+  font-size: 0.95rem;
 }
 
 /* Screenshots Section */
 .screenshots-section {
-  padding: 100px 0;
+  padding: 80px 0;
   background: white;
 }
 
 .screenshots-carousel {
   display: flex;
-  gap: 2rem;
   justify-content: center;
-  flex-wrap: wrap;
 }
 
 .screenshot-item {
   position: relative;
-  width: 300px;
-  height: 600px;
+  width: 100%;
+  max-width: 280px;
+  height: 500px;
   border-radius: 30px;
   overflow: hidden;
   box-shadow: 0 20px 50px rgba(0, 0, 0, 0.2);
   transition: all 0.3s ease;
+  margin: 0 auto;
 }
 
 .screenshot-item:hover {
@@ -415,15 +547,15 @@ body {
   margin-bottom: 0.5rem;
 }
 
-/* Download Section */
+/* Download Section - Tom mais escuro */
 .download-section {
-  padding: 100px 0;
-  background: linear-gradient(135deg, var(--primary-blue) 0%, var(--secondary-blue) 100%);
+  padding: 80px 0;
+  background: linear-gradient(135deg, var(--dark-blue) 0%, var(--darker-blue) 100%);
   color: white;
 }
 
 .download-title {
-  font-size: 2.5rem;
+  font-size: 2.2rem;
   font-weight: 700;
   margin-bottom: 1.5rem;
 }
@@ -434,17 +566,16 @@ body {
   opacity: 0.9;
 }
 
+/* Download features em coluna */
 .download-features {
-  display: flex;
-  flex-direction: column;
-  gap: 1rem;
-  margin-bottom: 2.5rem;
+  margin-bottom: 2rem;
 }
 
-.download-feature {
+.download-features .download-feature {
   display: flex;
   align-items: center;
   gap: 0.5rem;
+  margin-bottom: 1rem;
 }
 
 .download-feature i {
@@ -455,7 +586,7 @@ body {
 .btn-download-main {
   background: linear-gradient(45deg, var(--primary-orange), #ff7a28);
   border: none;
-  padding: 1.5rem 2rem;
+  padding: 1.2rem 2rem;
   border-radius: 15px;
   box-shadow: 0 10px 30px rgba(255, 140, 66, 0.4);
   transition: all 0.3s ease;
@@ -463,7 +594,7 @@ body {
   align-items: center;
   gap: 1rem;
   font-weight: 600;
-  margin-bottom: 1rem;
+  justify-content: center;
 }
 
 .btn-download-main:hover {
@@ -500,7 +631,7 @@ body {
 }
 
 .download-phone {
-  max-width: 300px;
+  max-width: 250px;
   margin: 0 auto;
 }
 
@@ -514,7 +645,7 @@ body {
 .footer {
   background: var(--text-dark);
   color: white;
-  padding: 60px 0 30px;
+  padding: 50px 0 30px;
 }
 
 .footer-brand .logo-text {
@@ -536,6 +667,7 @@ body {
 
 .footer-links {
   list-style: none;
+  padding: 0;
 }
 
 .footer-links li {
@@ -585,7 +717,7 @@ body {
 .footer-social {
   display: flex;
   gap: 1rem;
-  justify-content: flex-end;
+  justify-content: center;
 }
 
 .social-link {
@@ -629,64 +761,211 @@ body {
 }
 
 /* Responsive Design */
-@media (max-width: 768px) {
+@media (max-width: 1200px) {
+  .floating-coin {
+    font-size: 1.2rem;
+  }
   .hero-title {
-    font-size: 2.5rem;
+    font-size: 2.2rem;
   }
-
-  .hero-stats {
-    justify-content: center;
-  }
-
-  .hero-buttons {
-    justify-content: center;
-  }
-
   .section-title {
     font-size: 2rem;
   }
+}
 
-  .screenshots-carousel {
-    flex-direction: column;
-    align-items: center;
+@media (max-width: 992px) {
+  body {
+    padding-top: 65px;
   }
 
-  .screenshot-item {
-    width: 250px;
-    height: 500px;
+  .minimal-navbar {
+    height: 65px;
   }
 
-  .download-title {
+  .hero-title {
     font-size: 2rem;
   }
-
+  .hero-description {
+    font-size: 1rem;
+  }
+  .stat-number {
+    font-size: 1.5rem;
+  }
+  .stat-label {
+    font-size: 0.75rem;
+  }
+  .phone-mockup {
+    max-width: 250px;
+  }
+  .features-section,
+  .screenshots-section,
+  .download-section {
+    padding: 60px 0;
+  }
+  .section-title {
+    font-size: 1.8rem;
+  }
+  .download-title {
+    font-size: 1.8rem;
+  }
   .footer-social {
     justify-content: center;
     margin-top: 1rem;
   }
 }
 
-@media (max-width: 576px) {
-  .hero-title {
-    font-size: 2rem;
+@media (max-width: 768px) {
+  body {
+    padding-top: 60px;
   }
 
+  .minimal-navbar {
+    height: 60px;
+    padding: 0.6rem 0;
+  }
+
+  .logo-text {
+    font-size: 1.6rem;
+  }
+  .hero-title {
+    font-size: 1.8rem;
+  }
   .hero-description {
+    font-size: 0.95rem;
+  }
+  .hero-badge {
+    font-size: 0.8rem;
+    padding: 0.4rem 0.8rem;
+  }
+  .btn-download,
+  .btn-learn {
+    padding: 0.8rem 1.5rem;
+    font-size: 0.9rem;
+  }
+  .phone-mockup {
+    max-width: 200px;
+  }
+  .phone-frame {
+    padding: 10px;
+  }
+  .feature-card {
+    padding: 1.5rem 1rem;
+  }
+  .feature-icon {
+    width: 60px;
+    height: 60px;
+    font-size: 1.5rem;
+  }
+  .feature-card h4 {
+    font-size: 1.1rem;
+  }
+  .feature-card p {
+    font-size: 0.9rem;
+  }
+  .screenshot-item {
+    height: 400px;
+    max-width: 240px;
+  }
+  .screenshot-overlay {
+    padding: 1.5rem;
+  }
+  .btn-download-main {
+    padding: 1rem 1.5rem;
+    flex-direction: column;
+    gap: 0.5rem;
+  }
+  .btn-download-main i {
+    font-size: 1.5rem;
+  }
+  .btn-content {
+    align-items: center;
+  }
+  .download-app-image {
+    max-width: 200px;
+  }
+  /* Download features em coluna no mobile */
+  .download-features .download-feature {
+    margin-bottom: 0.8rem;
+  }
+}
+
+@media (max-width: 576px) {
+  body {
+    padding-top: 55px;
+  }
+
+  .minimal-navbar {
+    height: 55px;
+    padding: 0.5rem 0;
+  }
+
+  .hero-title {
+    font-size: 1.6rem;
+  }
+  .hero-description {
+    font-size: 0.9rem;
+  }
+  .stat-number {
+    font-size: 1.3rem;
+  }
+  .stat-label {
+    font-size: 0.7rem;
+  }
+  .phone-mockup {
+    max-width: 180px;
+  }
+  .floating-coin {
     font-size: 1rem;
   }
-
-  .hero-stats {
-    flex-direction: column;
-    gap: 1rem;
+  .section-title {
+    font-size: 1.6rem;
   }
-
+  .section-description {
+    font-size: 1rem;
+  }
   .feature-card {
-    padding: 2rem 1.5rem;
+    padding: 1.2rem 0.8rem;
   }
+  .screenshot-item {
+    height: 350px;
+    max-width: 200px;
+  }
+  .download-title {
+    font-size: 1.6rem;
+  }
+  .download-description {
+    font-size: 1rem;
+  }
+  .download-features .download-feature {
+    font-size: 0.9rem;
+    margin-bottom: 0.7rem;
+  }
+  .footer {
+    padding: 40px 0 20px;
+  }
+  .footer-brand .logo-text {
+    font-size: 1.6rem;
+  }
+}
 
+@media (max-width: 480px) {
+  .hero-title {
+    font-size: 1.4rem;
+  }
+  .phone-mockup {
+    max-width: 160px;
+  }
+  .btn-download,
+  .btn-learn {
+    padding: 0.7rem 1.2rem;
+    font-size: 0.85rem;
+  }
+  .screenshot-item {
+    height: 300px;
+    max-width: 180px;
+  }
   .btn-download-main {
-    width: 100%;
-    justify-content: center;
+    padding: 0.8rem 1rem;
   }
 }
 
@@ -709,4 +988,15 @@ html {
 
 .fade-in-up {
   animation: fadeInUp 0.6s ease-out;
+}
+
+/* Utility Classes */
+.w-sm-auto {
+  width: auto !important;
+}
+
+@media (min-width: 576px) {
+  .w-sm-auto {
+    width: auto !important;
+  }
 }
