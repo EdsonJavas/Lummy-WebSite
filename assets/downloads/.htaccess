@@ -1,0 +1,53 @@
+# Security headers for APK downloads
+<Files "*.apk">
+    Header set Content-Type "application/vnd.android.package-archive"
+    Header set Content-Disposition "attachment"
+    Header set X-Content-Type-Options "nosniff"
+    Header set X-Frame-Options "DENY"
+    Header set X-XSS-Protection "1; mode=block"
+</Files>
+
+# Prevent directory browsing
+Options -Indexes
+
+# Cache control for APK files
+<Files "*.apk">
+    ExpiresActive On
+    ExpiresDefault "access plus 1 month"
+</Files>
+
+# Security - prevent access to sensitive files
+<Files "*.log">
+    Order allow,deny
+    Deny from all
+</Files>
+
+<Files "*.json">
+    Order allow,deny
+    Deny from all
+</Files>
+
+# Compress files for better performance
+<IfModule mod_deflate.c>
+    AddOutputFilterByType DEFLATE text/plain
+    AddOutputFilterByType DEFLATE text/html
+    AddOutputFilterByType DEFLATE text/xml
+    AddOutputFilterByType DEFLATE text/css
+    AddOutputFilterByType DEFLATE application/xml
+    AddOutputFilterByType DEFLATE application/xhtml+xml
+    AddOutputFilterByType DEFLATE application/rss+xml
+    AddOutputFilterByType DEFLATE application/javascript
+    AddOutputFilterByType DEFLATE application/x-javascript
+</IfModule>
+
+# Enable browser caching
+<IfModule mod_expires.c>
+    ExpiresActive On
+    ExpiresByType text/css "access plus 1 month"
+    ExpiresByType application/javascript "access plus 1 month"
+    ExpiresByType image/png "access plus 1 month"
+    ExpiresByType image/jpg "access plus 1 month"
+    ExpiresByType image/jpeg "access plus 1 month"
+    ExpiresByType image/gif "access plus 1 month"
+    ExpiresByType image/svg+xml "access plus 1 month"
+</IfModule>
