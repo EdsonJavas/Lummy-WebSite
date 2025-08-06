@@ -4,58 +4,27 @@ document.querySelectorAll('a[href^="#"]').forEach((anchor) => {
     e.preventDefault()
     const target = document.querySelector(this.getAttribute("href"))
     if (target) {
-      const navbarHeight = 64 // Altura fixa da navbar profissional
-      const targetPosition = target.offsetTop - navbarHeight
-
+      const targetPosition = target.offsetTop
       window.scrollTo({
         top: targetPosition,
         behavior: "smooth",
       })
-
       // Update active link
       updateActiveLink(this.getAttribute("href").substring(1))
     }
   })
 })
 
-// Enhanced navbar scroll behavior
-const navbar = document.querySelector(".professional-navbar")
-const scrollProgress = document.querySelector(".scroll-progress") // Declare scrollProgress variable
-
-window.addEventListener("scroll", () => {
-  const scrollTop = window.pageYOffset || document.documentElement.scrollTop
-
-  // Navbar background change
-  if (scrollTop > 50) {
-    navbar.classList.add("scrolled")
-  } else {
-    navbar.classList.remove("scrolled")
-  }
-
-  // Update active section
-  updateActiveSection()
-
-  // Update scroll progress
-  const documentHeight = document.documentElement.scrollHeight - window.innerHeight
-  const scrollPercentage = (scrollTop / documentHeight) * 100
-
-  if (scrollProgress) {
-    scrollProgress.style.width = scrollPercentage + "%"
-  }
-})
-
 // Update active navigation link based on scroll position
 function updateActiveSection() {
   const sections = document.querySelectorAll("section[id]")
   const navLinks = document.querySelectorAll(".navbar-nav .nav-link[data-section]")
-
   let currentSection = ""
   const scrollPosition = window.scrollY + 100
 
   sections.forEach((section) => {
     const sectionTop = section.offsetTop
     const sectionHeight = section.offsetHeight
-
     if (scrollPosition >= sectionTop && scrollPosition < sectionTop + sectionHeight) {
       currentSection = section.getAttribute("id")
     }
@@ -93,25 +62,54 @@ document.querySelectorAll(".navbar-nav .nav-link").forEach((link) => {
 })
 
 // Navbar brand animation on hover
-const navbarBrand = document.querySelector(".navbar-brand")
+const navbarBrand = document.querySelector(".animated-brand")
 if (navbarBrand) {
   navbarBrand.addEventListener("mouseenter", () => {
     navbarBrand.style.transform = "scale(1.05) rotate(2deg)"
   })
-
   navbarBrand.addEventListener("mouseleave", () => {
     navbarBrand.style.transform = "scale(1) rotate(0deg)"
   })
 }
 
-// Enhanced hamburger menu animation
-const customToggler = document.querySelector(".custom-toggler")
-if (customToggler) {
-  customToggler.addEventListener("click", () => {
-    // Add haptic feedback for mobile devices
-    if (navigator.vibrate) {
-      navigator.vibrate(50)
-    }
+// Enhanced download button interactions
+const downloadBtn = document.querySelector(".btn-lummy-download")
+if (downloadBtn) {
+  downloadBtn.addEventListener("mouseenter", () => {
+    downloadBtn.style.transform = "translateY(-3px) scale(1.05)"
+  })
+  downloadBtn.addEventListener("mouseleave", () => {
+    downloadBtn.style.transform = "translateY(0) scale(1)"
+  })
+  
+  downloadBtn.addEventListener("click", (e) => {
+    // Add ripple effect
+    const ripple = document.createElement("span")
+    const rect = downloadBtn.getBoundingClientRect()
+    const size = Math.max(rect.width, rect.height)
+    const x = e.clientX - rect.left - size / 2
+    const y = e.clientY - rect.top - size / 2
+    
+    ripple.style.cssText = `
+      position: absolute;
+      width: ${size}px;
+      height: ${size}px;
+      left: ${x}px;
+      top: ${y}px;
+      background: rgba(255, 255, 255, 0.3);
+      border-radius: 50%;
+      transform: scale(0);
+      animation: ripple 0.6s ease-out;
+      pointer-events: none;
+    `
+    
+    downloadBtn.style.position = "relative"
+    downloadBtn.style.overflow = "hidden"
+    downloadBtn.appendChild(ripple)
+    
+    setTimeout(() => {
+      ripple.remove()
+    }, 600)
   })
 }
 
@@ -131,14 +129,14 @@ document.addEventListener("keydown", (e) => {
 // Initialize active section on page load
 document.addEventListener("DOMContentLoaded", () => {
   updateActiveSection()
-
+  
   // Add intersection observer for better performance
   const observerOptions = {
     root: null,
     rootMargin: "-20% 0px -80% 0px",
     threshold: 0,
   }
-
+  
   const observer = new IntersectionObserver((entries) => {
     entries.forEach((entry) => {
       if (entry.isIntersecting) {
@@ -147,87 +145,24 @@ document.addEventListener("DOMContentLoaded", () => {
       }
     })
   }, observerOptions)
-
+  
   // Observe all sections
   document.querySelectorAll("section[id]").forEach((section) => {
     observer.observe(section)
   })
 })
 
-// Navbar resize handler
-window.addEventListener("resize", () => {
-  // Reset navbar transform on resize
-  navbar.style.transform = "translateY(0)"
-
-  // Update scroll progress
-  const scrollTop = window.pageYOffset || document.documentElement.scrollTop
-  const documentHeight = document.documentElement.scrollHeight - window.innerHeight
-  const scrollPercentage = (scrollTop / documentHeight) * 100
-
-  if (scrollProgress) {
-    scrollProgress.style.width = scrollPercentage + "%"
-  }
+// Scroll event listener
+window.addEventListener("scroll", () => {
+  updateActiveSection()
 })
-
-// Add loading animation to navbar
-window.addEventListener("load", () => {
-  navbar.style.opacity = "0"
-  navbar.style.transform = "translateY(-100%)"
-
-  setTimeout(() => {
-    navbar.style.transition = "all 0.6s cubic-bezier(0.4, 0, 0.2, 1)"
-    navbar.style.opacity = "1"
-    navbar.style.transform = "translateY(0)"
-  }, 100)
-})
-
-// Enhanced CTA button interaction
-const ctaButton = document.querySelector(".btn-nav-download")
-if (ctaButton) {
-  ctaButton.addEventListener("mouseenter", () => {
-    ctaButton.style.transform = "translateY(-3px) scale(1.05)"
-  })
-
-  ctaButton.addEventListener("mouseleave", () => {
-    ctaButton.style.transform = "translateY(0) scale(1)"
-  })
-
-  ctaButton.addEventListener("click", (e) => {
-    // Add ripple effect
-    const ripple = document.createElement("span")
-    const rect = ctaButton.getBoundingClientRect()
-    const size = Math.max(rect.width, rect.height)
-    const x = e.clientX - rect.left - size / 2
-    const y = e.clientY - rect.top - size / 2
-
-    ripple.style.cssText = `
-      position: absolute;
-      width: ${size}px;
-      height: ${size}px;
-      left: ${x}px;
-      top: ${y}px;
-      background: rgba(255, 255, 255, 0.3);
-      border-radius: 50%;
-      transform: scale(0);
-      animation: ripple 0.6s ease-out;
-      pointer-events: none;
-    `
-
-    ctaButton.style.position = "relative"
-    ctaButton.style.overflow = "hidden"
-    ctaButton.appendChild(ripple)
-
-    setTimeout(() => {
-      ripple.remove()
-    }, 600)
-  })
-}
 
 // Download APK function
 function downloadAPK() {
   // Show download modal
   const modal = new window.bootstrap.Modal(document.getElementById("downloadModal"))
   modal.show()
+  
   // Simulate download preparation
   setTimeout(() => {
     // Hide modal
@@ -248,11 +183,13 @@ function downloadAPK() {
 function subscribeNewsletter(event) {
   event.preventDefault()
   const email = event.target.querySelector('input[type="email"]').value
+  
   // Show loading state
   const submitBtn = event.target.querySelector('button[type="submit"]')
   const originalHTML = submitBtn.innerHTML
   submitBtn.innerHTML = '<i class="fas fa-spinner fa-spin"></i>'
   submitBtn.disabled = true
+  
   // Simulate API call
   setTimeout(() => {
     showNotification("Obrigado por se inscrever! 📧", "success")
@@ -268,6 +205,7 @@ function showNotification(message, type = "info") {
   // Remove existing notifications
   const existingNotifications = document.querySelectorAll(".notification-toast")
   existingNotifications.forEach((notification) => notification.remove())
+  
   // Create notification element
   const notification = document.createElement("div")
   notification.className = `alert alert-${type === "success" ? "success" : "info"} notification-toast position-fixed`
@@ -278,6 +216,7 @@ function showNotification(message, type = "info") {
       <button type="button" class="btn-close ms-auto" onclick="this.parentElement.parentElement.remove()"></button>
     </div>
   `
+  
   // Add styles
   notification.style.cssText = `
     top: 100px;
@@ -289,8 +228,10 @@ function showNotification(message, type = "info") {
     box-shadow: 0 10px 30px rgba(0, 0, 0, 0.2);
     animation: slideInRight 0.3s ease-out;
   `
+  
   // Add to body
   document.body.appendChild(notification)
+  
   // Remove after 4 seconds
   setTimeout(() => {
     if (notification.parentNode) {
@@ -317,7 +258,7 @@ style.textContent = `
       opacity: 1;
     }
   }
-    
+  
   @keyframes slideOutRight {
     from {
       transform: translateX(0);
@@ -328,7 +269,14 @@ style.textContent = `
       opacity: 0;
     }
   }
-    
+  
+  @keyframes ripple {
+    to {
+      transform: scale(4);
+      opacity: 0;
+    }
+  }
+  
   @media (max-width: 576px) {
     .notification-toast {
       right: 10px !important;
@@ -451,25 +399,10 @@ document.addEventListener("DOMContentLoaded", () => {
   })
 })
 
-// Lazy loading for images
-document.addEventListener("DOMContentLoaded", () => {
-  const images = document.querySelectorAll("img[data-src]")
-  const imageObserver = new IntersectionObserver((entries) => {
-    entries.forEach((entry) => {
-      if (entry.isIntersecting) {
-        const img = entry.target
-        img.src = img.dataset.src
-        img.classList.remove("lazy")
-        imageObserver.unobserve(img)
-      }
-    })
-  })
-  images.forEach((img) => imageObserver.observe(img))
-})
-
 // Responsive adjustments
 function handleResize() {
   const width = window.innerWidth
+  
   // Adjust floating coins size based on screen size
   const coins = document.querySelectorAll(".floating-coin")
   coins.forEach((coin) => {
@@ -483,6 +416,7 @@ function handleResize() {
       coin.style.fontSize = "2rem"
     }
   })
+  
   // Adjust notification position on mobile
   const notifications = document.querySelectorAll(".notification-toast")
   notifications.forEach((notification) => {
@@ -503,20 +437,9 @@ window.addEventListener("resize", handleResize)
 document.addEventListener("DOMContentLoaded", handleResize)
 
 // Console welcome message
-console.log(`🚀 Bem-vindo ao Lummy!
+console.log(`
+🚀 Bem-vindo ao Lummy!
 📱 Educação financeira lúdica para crianças
-💡 Desenvolvido com ❤️ para transformar o aprendizado sobre dinheiro em diversão!
-🔗 Visite: https://lummy.app
-📧 Contato: contato@lummy.app`)
-
-// Performance optimization
-document.addEventListener("DOMContentLoaded", () => {
-  // Preload critical images
-  const criticalImages = [
-    "https://hebbkx1anhila5yf.public.blob.vercel-storage.com/astronauta-lummy-OXK8DpNpgdSxKxNZKtIyQynALBlh6n.svg",
-  ]
-  criticalImages.forEach((src) => {
-    const img = new Image()
-    img.src = src
-  })
-})
+💡 Nova navbar super estilizada!
+✨ Desenvolvido com ❤️
+`)

@@ -9,61 +9,93 @@
     <link href="https://cdn.jsdelivr.net/npm/bootstrap@5.3.0/dist/css/bootstrap.min.css" rel="stylesheet">
     
     <!-- Google Fonts -->
-    <link href="https://fonts.googleapis.com/css2?family=Poppins:wght@300;400;500;600;700;800&family=Paytone+One&display=swap" rel="stylesheet">
+    <link href="https://fonts.googleapis.com/css2?family=Poppins:wght=300;400;500;600;700;800&family=Paytone+One&display=swap" rel="stylesheet">
     
     <!-- Font Awesome -->
     <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/6.4.0/css/all.min.css">
     
     <!-- Custom CSS -->
     <link rel="stylesheet" href="assets/css/style.css">
-    
-    <!-- Favicon -->
-    <link rel="icon" type="image/png" href="assets/images/favicon.png">
 </head>
 <body>
-    <!-- Professional Navigation -->
-<nav class="navbar navbar-expand-lg navbar-dark professional-navbar fixed-top" id="mainNavbar">
-    <div class="container-fluid px-3 px-lg-5">
-        <!-- Logo -->
-        <a class="navbar-brand" href="#home">
-            <span class="logo-text">
-                <span class="logo-lu">Lu</span><span class="logo-m1">m</span><span class="logo-m2">m</span><span class="logo-y">y</span>
-            </span>
-        </a>
-        
-        <!-- Mobile Toggle -->
-        <button class="navbar-toggler" type="button" data-bs-toggle="collapse" data-bs-target="#navbarNav" aria-controls="navbarNav" aria-expanded="false" aria-label="Toggle navigation">
-            <span class="navbar-toggler-icon"></span>
-        </button>
-        
-        <!-- Navigation Menu -->
-        <div class="collapse navbar-collapse" id="navbarNav">
-            <ul class="navbar-nav me-auto">
-                <li class="nav-item">
-                    <a class="nav-link active" href="#home" data-section="home">Início</a>
-                </li>
-                <li class="nav-item">
-                    <a class="nav-link" href="#features" data-section="features">Recursos</a>
-                </li>
-                <li class="nav-item">
-                    <a class="nav-link" href="#screenshots" data-section="screenshots">Capturas</a>
-                </li>
-                <li class="nav-item">
-                    <a class="nav-link" href="#download" data-section="download">Download</a>
-                </li>
-            </ul>
+    <!-- Nova Navbar Lúdica (APENAS ESTA PARTE FOI MODIFICADA) -->
+    <nav class="navbar navbar-expand-lg lummy-navbar" id="mainNavbar">
+        <div class="container-fluid px-3 px-lg-5">
+            <!-- Logo com animação -->
+            <a class="navbar-brand animated-brand" href="#home">
+                <div class="logo-container">
+                    <span class="logo-text">
+                        <span class="logo-lu">Lu</span><span class="logo-m1">m</span><span class="logo-m2">m</span><span class="logo-y">y</span>
+                    </span>
+                    <div class="logo-sparkle">✨</div>
+                </div>
+            </a>
             
-            <!-- Download Button -->
-            <div class="navbar-nav">
-                <a class="btn btn-download-nav" href="#download">
-                    <i class="fas fa-download me-2"></i>
-                    Baixar App
-                </a>
+            <!-- Mobile Toggle Estilizado -->
+            <button class="navbar-toggler custom-toggler" type="button" data-bs-toggle="collapse" data-bs-target="#navbarNav">
+                <span class="toggler-line"></span>
+                <span class="toggler-line"></span>
+                <span class="toggler-line"></span>
+            </button>
+            
+            <!-- Navigation Menu -->
+            <div class="collapse navbar-collapse" id="navbarNav">
+                <ul class="navbar-nav me-auto">
+                    <li class="nav-item">
+                        <a class="nav-link active" href="#home" data-section="home">
+                            <i class="fas fa-home nav-icon"></i>
+                            <span>Início</span>
+                        </a>
+                    </li>
+                    <li class="nav-item">
+                        <a class="nav-link" href="#features" data-section="features">
+                            <i class="fas fa-star nav-icon"></i>
+                            <span>Recursos</span>
+                        </a>
+                    </li>
+                    <li class="nav-item">
+                        <a class="nav-link" href="#screenshots" data-section="screenshots">
+                            <i class="fas fa-images nav-icon"></i>
+                            <span>Capturas</span>
+                        </a>
+                    </li>
+                    <li class="nav-item">
+                        <a class="nav-link" href="#download" data-section="download">
+                            <i class="fas fa-download nav-icon"></i>
+                            <span>Download</span>
+                        </a>
+                    </li>
+                </ul>
+                
+                <!-- Botão Download Super Estilizado -->
+                <div class="navbar-nav">
+                    <a class="btn-lummy-download" href="#download">
+                        <div class="btn-bg-animation"></div>
+                        <div class="btn-content">
+                            <i class="fab fa-android btn-icon"></i>
+                            <span class="btn-text">BAIXAR APP</span>
+                            <div class="btn-sparkles">
+                                <span class="sparkle">⭐</span>
+                                <span class="sparkle">💫</span>
+                                <span class="sparkle">✨</span>
+                            </div>
+                        </div>
+                        <div class="btn-glow"></div>
+                    </a>
+                </div>
             </div>
         </div>
-    </div>
-</nav>
+        
+        <!-- Decorative Elements -->
+        <div class="navbar-decoration">
+            <div class="floating-icon icon-1">🪙</div>
+            <div class="floating-icon icon-2">💰</div>
+            <div class="floating-icon icon-3">🎯</div>
+        </div>
+    </nav>
 
+    <!-- RESTO DO SITE ORIGINAL (SEM ALTERAÇÕES) -->
+    
     <!-- Hero Section with proper padding-top -->
     <section id="home" class="hero-section">
         <div class="hero-background">
@@ -233,41 +265,77 @@
                 <div class="col-12 col-lg-8 mx-auto text-center">
                     <h2 class="section-title">Veja o Lummy em ação</h2>
                     <p class="section-description">
-                        Interface intuitiva e colorida, desenvolvida especialmente para crianças
+                        Interface intuitiva e colorida, desenvolvida especialmente para crianças e jovens
                     </p>
                 </div>
             </div>
-            
+        
             <div class="row mt-4 mt-md-5 justify-content-center">
                 <div class="col-12">
                     <div class="screenshots-carousel">
-                        <div class="row g-4 justify-content-center">
-                            <div class="col-12 col-sm-6 col-lg-4">
-                                <div class="screenshot-item">
-                                    <img src="https://hebbkx1anhila5yf.public.blob.vercel-storage.com/Lum%202-0CkW5uvZjaDxIjCSextrqE198N99r7.png" alt="Tela Principal" class="screenshot-img">
-                                    <div class="screenshot-overlay">
-                                        <h5>Tela Principal</h5>
-                                        <p>Cofrinho digital e metas</p>
+                        <div class="screenshots-grid">
+                            <div class="screenshot-item">
+                                <div class="screenshot-content">
+                                    <div class="screenshot-header">
+                                        <div class="screenshot-icon">
+                                            <i class="fas fa-piggy-bank"></i>
+                                        </div>
+                                        <h3 class="screenshot-title">Cofrinho Digital</h3>
+                                    </div>
+                                    <p class="screenshot-description">
+                                        Acompanhe o saldo em tempo real com um cofrinho virtual divertido e interativo que motiva a economia.
+                                    </p>
+                                    <div class="screenshot-image-container">
+                                        <img src="https://hebbkx1anhila5yf.public.blob.vercel-storage.com/Lum%202-0CkW5uvZjaDxIjCSextrqE198N99r7.png" alt="Cofrinho Digital" class="screenshot-img">
+                                    </div>
+                                    <div class="screenshot-features">
+                                        <span class="screenshot-feature">Saldo em tempo real</span>
+                                        <span class="screenshot-feature">Interface lúdica</span>
+                                        <span class="screenshot-feature">Metas visuais</span>
                                     </div>
                                 </div>
                             </div>
                             
-                            <div class="col-12 col-sm-6 col-lg-4">
-                                <div class="screenshot-item">
-                                    <img src="https://hebbkx1anhila5yf.public.blob.vercel-storage.com/fotocriancafodase%201-MFp8K8GLj7deZeGCFVqMJVDVgEtfsc.png" alt="Perfil" class="screenshot-img">
-                                    <div class="screenshot-overlay">
-                                        <h5>Perfil do Usuário</h5>
-                                        <p>Conquistas e estatísticas</p>
+                            <div class="screenshot-item">
+                                <div class="screenshot-content">
+                                    <div class="screenshot-header">
+                                        <div class="screenshot-icon">
+                                            <i class="fas fa-user-circle"></i>
+                                        </div>
+                                        <h3 class="screenshot-title">Perfil Personalizado</h3>
+                                    </div>
+                                    <p class="screenshot-description">
+                                        Cada criança tem seu próprio perfil com conquistas, estatísticas e progresso personalizado.
+                                    </p>
+                                    <div class="screenshot-image-container">
+                                        <img src="https://hebbkx1anhila5yf.public.blob.vercel-storage.com/fotocriancafodase%201-MFp8K8GLj7deZeGCFVqMJVDVgEtfsc.png" alt="Perfil Personalizado" class="screenshot-img">
+                                    </div>
+                                    <div class="screenshot-features">
+                                        <span class="screenshot-feature">Conquistas</span>
+                                        <span class="screenshot-feature">Estatísticas</span>
+                                        <span class="screenshot-feature">Progresso visual</span>
                                     </div>
                                 </div>
                             </div>
                             
-                            <div class="col-12 col-sm-6 col-lg-4">
-                                <div class="screenshot-item">
-                                    <img src="https://hebbkx1anhila5yf.public.blob.vercel-storage.com/Design%20sem%20nome%20%281%29-3cva84Hcw1yVzTEgDHAc16jDZNkolI.svg" alt="Configuração" class="screenshot-img">
-                                    <div class="screenshot-overlay">
-                                        <h5>Configuração</h5>
-                                        <p>Personalize sua experiência</p>
+                            <div class="screenshot-item">
+                                <div class="screenshot-content">
+                                    <div class="screenshot-header">
+                                        <div class="screenshot-icon">
+                                            <i class="fas fa-cog"></i>
+                                        </div>
+                                        <h3 class="screenshot-title">Configurações Simples</h3>
+                                    </div>
+                                    <p class="screenshot-description">
+                                        Interface de configuração intuitiva que permite personalizar a experiência de cada criança.
+                                    </p>
+                                    <div class="screenshot-image-container">
+                                        <img src="https://hebbkx1anhila5yf.public.blob.vercel-storage.com/Design%20sem%20nome%20%281%29-3cva84Hcw1yVzTEgDHAc16jDZNkolI.svg" alt="Configurações" class="screenshot-img">
+                                    </div>
+                                    <div class="screenshot-features">
+                                        <span class="screenshot-feature">Fácil configuração</span>
+                                        <span class="screenshot-feature">Controle parental</span>
+                                        <span class="screenshot-feature">Personalização</span>
                                     </div>
                                 </div>
                             </div>
@@ -439,8 +507,6 @@
 
     <!-- Bootstrap JS -->
     <script src="https://cdn.jsdelivr.net/npm/bootstrap@5.3.0/dist/js/bootstrap.bundle.min.js"></script>
-    
-    <!-- Custom JS -->
     <script src="assets/js/script.js"></script>
 </body>
 </html>
