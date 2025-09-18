@@ -1,0 +1,28 @@
+{
+  "name": "lummy-website",
+  "private": true,
+  "version": "0.0.0",
+  "type": "module",
+  "dependencies": {
+    "hono": "^4.6.8",
+    "lucide-react": "^0.510.0",
+    "react": "19.0.0",
+    "react-dom": "19.0.0",
+    "react-router": "^7.5.3"
+  },
+  "devDependencies": {
+    "@types/node": "22.14.1",
+    "@types/react": "19.0.10",
+    "@types/react-dom": "19.0.4",
+    "@vitejs/plugin-react": "4.4.1",
+    "postcss": "^8.5.3",
+    "tailwindcss": "^3.4.17",
+    "typescript": "5.8.3",
+    "vite": "^6.0.0"
+  },
+  "scripts": {
+    "build": "tsc -b && vite build",
+    "dev": "vite",
+    "preview": "vite preview"
+  }
+}
