@@ -86,14 +86,20 @@ export default function Download() {
                 </div>
               </div>
 
-              <button className="w-full group relative overflow-hidden bg-gradient-to-r from-lummy-blue via-lummy-pink to-lummy-orange p-[2px] rounded-xl transition-all duration-300 hover:scale-105 hover:shadow-2xl">
+              <a
+                href="/downloads/lummy.apk"
+                download
+                target="_blank"
+                rel="noopener noreferrer"
+                className="w-full group relative overflow-hidden bg-gradient-to-r from-lummy-blue via-lummy-pink to-lummy-orange p-[2px] rounded-xl transition-all duration-300 hover:scale-105 hover:shadow-2xl block"
+              >
                 <div className={`relative w-full py-4 px-6 rounded-xl flex items-center justify-center space-x-3 font-semibold text-lg transition-all duration-300 ${
                   isDark ? 'bg-gray-800 text-white group-hover:bg-transparent group-hover:text-white' : 'bg-white text-gray-900 group-hover:bg-transparent group-hover:text-white'
                 }`}>
                   <DownloadIcon className="w-6 h-6" />
-                  <span>Baixar APK (25.4 MB)</span>
+                  <span>Baixar APK</span>
                 </div>
-              </button>
+              </a>
 
               <div className="flex items-center justify-center space-x-6 mt-6 text-sm">
                 <div className="flex items-center space-x-2">

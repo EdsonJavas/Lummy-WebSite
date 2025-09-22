@@ -51,6 +51,14 @@ npm run build
 npm start
 ```
 
+## 📦 Arquivo de Download (APK)
+
+Para que o botão de download funcione, adicione seu arquivo APK em `public/downloads/lummy.apk`.
+
+- Caminho público em produção e desenvolvimento: `/downloads/lummy.apk`
+- Você pode usar outro nome, mas então atualize o `href` no componente `src/react-app/components/Download.tsx`.
+
+
 ## 📱 Páginas
 
 - **Home** - Página inicial com hero section, serviços, portfólio, depoimentos e CTA
