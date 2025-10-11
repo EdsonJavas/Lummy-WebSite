@@ -38,11 +38,6 @@ export default function Layout({ children }: LayoutProps) {
               }`}>
                 Início
               </a>
-              <a href="#sobre" className={`hover:text-lummy-pink transition-colors ${
-                isDark ? 'text-gray-300 hover:text-lummy-pink' : 'text-gray-700 hover:text-lummy-pink'
-              }`}>
-                Sobre
-              </a>
               <a href="#recursos" className={`hover:text-lummy-orange transition-colors ${
                 isDark ? 'text-gray-300 hover:text-lummy-orange' : 'text-gray-700 hover:text-lummy-orange'
               }`}>

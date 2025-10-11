@@ -176,19 +176,19 @@ export default function Download() {
           <div className="grid md:grid-cols-3 gap-6 text-sm">
             <div>
               <strong className={`${isDark ? 'text-gray-300' : 'text-gray-700'}`}>Android:</strong>
-              <span className={`block ${isDark ? 'text-gray-400' : 'text-gray-600'}`}>
+              <span className={`${isDark ? 'text-gray-400' : 'text-gray-600'}`}>
                 5.0 (API level 21) ou superior
               </span>
             </div>
             <div>
               <strong className={`${isDark ? 'text-gray-300' : 'text-gray-700'}`}>Espaço:</strong>
-              <span className={`block ${isDark ? 'text-gray-400' : 'text-gray-600'}`}>
+              <span className={`${isDark ? 'text-gray-400' : 'text-gray-600'}`}>
                 50 MB de armazenamento livre
               </span>
             </div>
             <div>
               <strong className={`${isDark ? 'text-gray-300' : 'text-gray-700'}`}>Conexão:</strong>
-              <span className={`block ${isDark ? 'text-gray-400' : 'text-gray-600'}`}>
+              <span className={`${isDark ? 'text-gray-400' : 'text-gray-600'}`}>
                 Internet para sincronização
               </span>
             </div>
@@ -198,3 +198,4 @@ export default function Download() {
     </section>
   );
 }
+
