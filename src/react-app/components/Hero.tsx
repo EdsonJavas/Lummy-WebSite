@@ -5,7 +5,14 @@ export default function Hero() {
   const { isDark } = useTheme();
 
   return (
-    <section id="inicio" className="relative overflow-hidden">
+    <section
+      id="inicio"
+      className={`relative overflow-hidden ${
+        isDark
+          ? "bg-gray-950"
+          : "bg-gradient-to-br from-gray-50 via-white to-gray-100"
+      }`}
+    >
       {/* Background Elements */}
       <div className="absolute inset-0 pointer-events-none">
         <div className={`absolute top-20 left-10 w-20 h-20 rounded-full animate-pulse ${

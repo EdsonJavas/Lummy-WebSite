@@ -8,6 +8,15 @@
   font-family: 'Poppins', 'Inter', system-ui, Avenir, Helvetica, Arial, sans-serif;
 }
 
+/* Base da página alinhada ao tema (classe `dark` no <html>, aplicada pelo ThemeProvider) */
+html.dark body {
+  @apply bg-gray-950 text-gray-100 min-h-screen antialiased;
+}
+
+html:not(.dark) body {
+  @apply bg-white text-gray-900 min-h-screen antialiased;
+}
+
 /* Custom animations */
 @keyframes float {
   0%, 100% {

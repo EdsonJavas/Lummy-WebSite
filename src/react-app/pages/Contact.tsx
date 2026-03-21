@@ -1,10 +1,8 @@
-import { ThemeProvider } from '@/react-app/hooks/useTheme';
-import Layout from '@/react-app/components/Layout';
 import { Mail, Phone, MapPin, MessageCircle, Send, Star, Clock, Users } from 'lucide-react';
 import { useTheme } from '@/react-app/hooks/useTheme';
 import { useState } from 'react';
 
-function ContactContent() {
+export function ContactSection() {
   const { isDark } = useTheme();
   const [name, setName] = useState('');
   const [email, setEmail] = useState('');
@@ -316,12 +314,8 @@ function ContactContent() {
 
 export default function ContactPage() {
   return (
-    <ThemeProvider>
-      <Layout>
-        <div className="pt-8">
-          <ContactContent />
-        </div>
-      </Layout>
-    </ThemeProvider>
+    <div className="pt-4">
+      <ContactSection />
+    </div>
   );
 }

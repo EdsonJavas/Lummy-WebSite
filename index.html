@@ -29,6 +29,19 @@
     <meta property="twitter:title" content="Lummy - Educação Financeira Divertida para Crianças" />
     <meta property="twitter:description" content="O Lummy transforma educação financeira em uma aventura espacial divertida! Ensine seu filho a gerenciar dinheiro de forma interativa e envolvente." />
     <meta property="twitter:image" content="https://mocha-cdn.com/0199435f-1bfa-756b-b8c4-508b94b8fa6e/fac72bb4-adcf-4593-bfd2-6a6d1617f56c-1.png" />
+    <script>
+      (function () {
+        try {
+          var s = localStorage.getItem("lummy-theme");
+          var dark =
+            s === "dark" ||
+            (s !== "light" &&
+              window.matchMedia("(prefers-color-scheme: dark)").matches);
+          document.documentElement.classList.toggle("dark", dark);
+          document.documentElement.style.colorScheme = dark ? "dark" : "light";
+        } catch (e) {}
+      })();
+    </script>
   </head>
   <body>
     <div id="root"></div>

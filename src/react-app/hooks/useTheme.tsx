@@ -1,4 +1,11 @@
-import { createContext, useContext, useState, useEffect, ReactNode } from 'react';
+import {
+  createContext,
+  useContext,
+  useState,
+  useEffect,
+  useLayoutEffect,
+  type ReactNode,
+} from "react";
 
 interface ThemeContextType {
   isDark: boolean;
@@ -7,20 +14,33 @@ interface ThemeContextType {
 
 const ThemeContext = createContext<ThemeContextType | undefined>(undefined);
 
+function applyThemeToDocument(isDark: boolean) {
+  if (typeof document === "undefined") return;
+  const root = document.documentElement;
+  root.classList.toggle("dark", isDark);
+  root.style.colorScheme = isDark ? "dark" : "light";
+}
+
 export function ThemeProvider({ children }: { children: ReactNode }) {
   const [isDark, setIsDark] = useState(() => {
-    if (typeof window !== 'undefined') {
-      const saved = localStorage.getItem('lummy-theme');
-      return saved === 'dark' || (!saved && window.matchMedia('(prefers-color-scheme: dark)').matches);
+    if (typeof window !== "undefined") {
+      const saved = localStorage.getItem("lummy-theme");
+      if (saved === "dark") return true;
+      if (saved === "light") return false;
+      return window.matchMedia("(prefers-color-scheme: dark)").matches;
     }
     return false;
   });
 
-  useEffect(() => {
-    localStorage.setItem('lummy-theme', isDark ? 'dark' : 'light');
+  useLayoutEffect(() => {
+    applyThemeToDocument(isDark);
   }, [isDark]);
 
-  const toggleTheme = () => setIsDark(!isDark);
+  useEffect(() => {
+    localStorage.setItem("lummy-theme", isDark ? "dark" : "light");
+  }, [isDark]);
+
+  const toggleTheme = () => setIsDark((d) => !d);
 
   return (
     <ThemeContext.Provider value={{ isDark, toggleTheme }}>
