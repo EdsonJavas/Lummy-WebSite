@@ -1,6 +1,9 @@
 import { Download as DownloadIcon, Smartphone, Shield, Clock, CheckCircle, Star, Gamepad2, Target } from 'lucide-react';
 import { useTheme } from '@/react-app/hooks/useTheme';
 
+/** Igual a `version` em Lummy_Mobile/pubspec.yaml — atualize ao publicar APK novo no site. */
+const APK_VERSION = '1.0.0+2';
+
 export default function Download() {
   const { isDark } = useTheme();
 
@@ -81,14 +84,15 @@ export default function Download() {
                     LUMMY APK
                   </h3>
                   <p className={`${isDark ? 'text-gray-300' : 'text-gray-600'}`}>
-                    Versão 1.0.0+1 • APK release (atualizado para download no site)
+                    Versão {APK_VERSION.split('+')[0]} (build{" "}
+                    {APK_VERSION.split('+')[1] ?? "1"}) • APK release
                   </p>
                 </div>
               </div>
 
               <a
-                href="/downloads/lummy.apk"
-                download
+                href={`/downloads/lummy.apk?v=${encodeURIComponent(APK_VERSION)}`}
+                download="lummy.apk"
                 target="_blank"
                 rel="noopener noreferrer"
                 className="w-full group relative overflow-hidden bg-gradient-to-r from-lummy-blue via-lummy-pink to-lummy-orange p-[2px] rounded-xl transition-all duration-300 hover:scale-105 hover:shadow-2xl block"
