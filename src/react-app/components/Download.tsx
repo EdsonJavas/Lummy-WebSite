@@ -81,7 +81,7 @@ export default function Download() {
                     LUMMY APK
                   </h3>
                   <p className={`${isDark ? 'text-gray-300' : 'text-gray-600'}`}>
-                    Versão 1.0.0 • Build atual (APK release)
+                    Versão 1.0.0+1 • APK release (atualizado para download no site)
                   </p>
                 </div>
               </div>
