@@ -111,6 +111,142 @@ type DayGroup = {
   items: TxRow[];
 };
 
+function DayExtratoBlock({
+  group: g,
+  isDark,
+}: {
+  group: DayGroup;
+  isDark: boolean;
+}) {
+  const dt = dayTotals(g.items);
+  const divideLine = isDark ? "divide-white/[0.06]" : "divide-[#E2E8F0]";
+
+  return (
+    <div
+      className={`overflow-hidden rounded-xl border ${
+        isDark
+          ? "border-white/[0.1] bg-[#121826]/80"
+          : "border-[#E2E8F0] bg-white shadow-sm"
+      }`}
+    >
+      <div
+        className={`flex flex-col gap-2 border-b px-3 py-2.5 sm:flex-row sm:items-center sm:justify-between sm:px-3.5 sm:py-2 ${
+          isDark
+            ? "border-white/[0.08] bg-white/[0.03]"
+            : "border-[#E2E8F0] bg-[#F8FAFC]"
+        }`}
+      >
+        <div className="flex min-w-0 items-center gap-2">
+          <CalendarDays
+            className="h-4 w-4 shrink-0 text-[#FF66B3]"
+            strokeWidth={2}
+            aria-hidden
+          />
+          <div className="min-w-0">
+            <h2
+              className={`font-poppins text-sm font-bold leading-tight sm:text-[15px] ${
+                isDark ? "text-white" : "text-[#1E293B]"
+              }`}
+            >
+              {g.shortTitle}
+              <span
+                className={`ml-1.5 font-normal opacity-80 ${
+                  isDark ? "text-gray-400" : "text-[#64748B]"
+                }`}
+              >
+                · {dt.count} {dt.count === 1 ? "item" : "itens"}
+              </span>
+            </h2>
+            <p
+              className={`truncate font-poppins text-[11px] leading-tight ${
+                isDark ? "text-gray-500" : "text-[#94A3B8]"
+              }`}
+            >
+              {g.label}
+            </p>
+          </div>
+        </div>
+        <div
+          className={`flex flex-wrap items-center gap-x-3 gap-y-0.5 font-poppins text-[11px] tabular-nums sm:justify-end sm:text-xs ${
+            isDark ? "text-gray-400" : "text-[#64748B]"
+          }`}
+        >
+          <span>
+            <span className="opacity-70">+ </span>
+            <span className="font-semibold text-[#10B981]">
+              {brl(dt.income)}
+            </span>
+          </span>
+          <span className="opacity-30">|</span>
+          <span>
+            <span className="opacity-70">− </span>
+            <span className="font-semibold text-[#FF66B3]">
+              {brl(dt.expense)}
+            </span>
+          </span>
+          <span className="opacity-30">|</span>
+          <span
+            className={`font-semibold ${
+              dt.net >= 0 ? "text-[#10B981]" : "text-[#FF66B3]"
+            }`}
+          >
+            = {dt.net >= 0 ? "+" : ""}
+            {brl(dt.net)}
+          </span>
+        </div>
+      </div>
+
+      <ul className={`divide-y ${divideLine}`}>
+        {g.items.map((t) => {
+          const isExp = t.type === "expense";
+          const bar = isExp ? "bg-[#FF66B3]" : "bg-[#10B981]";
+          return (
+            <li key={t.id} className="list-none">
+              <div
+                className={`flex items-center gap-2.5 px-3 py-2 sm:gap-3 sm:px-3.5 sm:py-2 ${
+                  isDark ? "hover:bg-white/[0.03]" : "hover:bg-[#F8FAFC]"
+                }`}
+              >
+                <div
+                  className={`h-9 w-0.5 shrink-0 rounded-full ${bar}`}
+                  aria-hidden
+                />
+                <div className="flex min-w-0 flex-1 flex-col gap-0.5 sm:flex-row sm:items-baseline sm:justify-between sm:gap-3">
+                  <div className="min-w-0">
+                    <p
+                      className={`truncate font-poppins text-[13px] font-semibold leading-tight sm:text-sm ${
+                        isDark ? "text-gray-100" : "text-[#1E293B]"
+                      }`}
+                    >
+                      {t.description?.trim() || t.category || "Sem título"}
+                    </p>
+                    <p
+                      className={`truncate font-poppins text-[11px] leading-tight ${
+                        isDark ? "text-gray-500" : "text-[#94A3B8]"
+                      }`}
+                    >
+                      {t.category || "—"} · {typeLabel(t.type)} ·{" "}
+                      {statusLabel(t.status)}
+                    </p>
+                  </div>
+                  <p
+                    className={`shrink-0 self-end font-poppins text-[13px] font-bold tabular-nums sm:self-auto sm:text-sm ${
+                      isExp ? "text-[#FF66B3]" : "text-[#10B981]"
+                    }`}
+                  >
+                    {isExp ? "−" : "+"}
+                    {brl(t.amount)}
+                  </p>
+                </div>
+              </div>
+            </li>
+          );
+        })}
+      </ul>
+    </div>
+  );
+}
+
 export default function TransactionsPage() {
   const { isDark } = useTheme();
   const { profile } = useAuth();
@@ -530,141 +666,7 @@ export default function TransactionsPage() {
           </p>
         </div>
       ) : activeGroup ? (
-        (() => {
-          const g = activeGroup;
-          const dt = dayTotals(g.items);
-          const divideLine = isDark
-            ? "divide-white/[0.06]"
-            : "divide-[#E2E8F0]";
-          return (
-            <div
-              className={`overflow-hidden rounded-xl border ${
-                isDark
-                  ? "border-white/[0.1] bg-[#121826]/80"
-                  : "border-[#E2E8F0] bg-white shadow-sm"
-              }`}
-            >
-              <div
-                className={`flex flex-col gap-2 border-b px-3 py-2.5 sm:flex-row sm:items-center sm:justify-between sm:px-3.5 sm:py-2 ${
-                  isDark
-                    ? "border-white/[0.08] bg-white/[0.03]"
-                    : "border-[#E2E8F0] bg-[#F8FAFC]"
-                }`}
-              >
-                <div className="flex min-w-0 items-center gap-2">
-                  <CalendarDays
-                    className="h-4 w-4 shrink-0 text-[#FF66B3]"
-                    strokeWidth={2}
-                    aria-hidden
-                  />
-                  <div className="min-w-0">
-                    <h2
-                      className={`font-poppins text-sm font-bold leading-tight sm:text-[15px] ${
-                        isDark ? "text-white" : "text-[#1E293B]"
-                      }`}
-                    >
-                      {g.shortTitle}
-                      <span
-                        className={`ml-1.5 font-normal opacity-80 ${
-                          isDark ? "text-gray-400" : "text-[#64748B]"
-                        }`}
-                      >
-                        · {dt.count} {dt.count === 1 ? "item" : "itens"}
-                      </span>
-                    </h2>
-                    <p
-                      className={`truncate font-poppins text-[11px] leading-tight ${
-                        isDark ? "text-gray-500" : "text-[#94A3B8]"
-                      }`}
-                    >
-                      {g.label}
-                    </p>
-                  </div>
-                </div>
-                <div
-                  className={`flex flex-wrap items-center gap-x-3 gap-y-0.5 font-poppins text-[11px] tabular-nums sm:justify-end sm:text-xs ${
-                    isDark ? "text-gray-400" : "text-[#64748B]"
-                  }`}
-                >
-                  <span>
-                    <span className="opacity-70">+ </span>
-                    <span className="font-semibold text-[#10B981]">
-                      {brl(dt.income)}
-                    </span>
-                  </span>
-                  <span className="opacity-30">|</span>
-                  <span>
-                    <span className="opacity-70">− </span>
-                    <span className="font-semibold text-[#FF66B3]">
-                      {brl(dt.expense)}
-                    </span>
-                  </span>
-                  <span className="opacity-30">|</span>
-                  <span
-                    className={`font-semibold ${
-                      dt.net >= 0 ? "text-[#10B981]" : "text-[#FF66B3]"
-                    }`}
-                  >
-                    = {dt.net >= 0 ? "+" : ""}
-                    {brl(dt.net)}
-                  </span>
-                </div>
-              </div>
-
-              <ul className={`divide-y ${divideLine}`}>
-                {g.items.map((t) => {
-                  const isExp = t.type === "expense";
-                  const bar = isExp ? "bg-[#FF66B3]" : "bg-[#10B981]";
-                  return (
-                    <li key={t.id} className="list-none">
-                      <div
-                        className={`flex items-center gap-2.5 px-3 py-2 sm:gap-3 sm:px-3.5 sm:py-2 ${
-                          isDark
-                            ? "hover:bg-white/[0.03]"
-                            : "hover:bg-[#F8FAFC]"
-                        }`}
-                      >
-                        <div
-                          className={`h-9 w-0.5 shrink-0 rounded-full ${bar}`}
-                          aria-hidden
-                        />
-                        <div className="flex min-w-0 flex-1 flex-col gap-0.5 sm:flex-row sm:items-baseline sm:justify-between sm:gap-3">
-                          <div className="min-w-0">
-                            <p
-                              className={`truncate font-poppins text-[13px] font-semibold leading-tight sm:text-sm ${
-                                isDark ? "text-gray-100" : "text-[#1E293B]"
-                              }`}
-                            >
-                              {t.description?.trim() ||
-                                t.category ||
-                                "Sem título"}
-                            </p>
-                            <p
-                              className={`truncate font-poppins text-[11px] leading-tight ${
-                                isDark ? "text-gray-500" : "text-[#94A3B8]"
-                              }`}
-                            >
-                              {t.category || "—"} · {typeLabel(t.type)} ·{" "}
-                              {statusLabel(t.status)}
-                            </p>
-                          </div>
-                          <p
-                            className={`shrink-0 self-end font-poppins text-[13px] font-bold tabular-nums sm:self-auto sm:text-sm ${
-                              isExp ? "text-[#FF66B3]" : "text-[#10B981]"
-                            }`}
-                          >
-                            {isExp ? "−" : "+"}
-                            {brl(t.amount)}
-                          </p>
-                        </div>
-                      </div>
-                    </li>
-                  );
-                })}
-              </ul>
-            </div>
-          );
-        })()
+        <DayExtratoBlock group={activeGroup} isDark={isDark} />
       ) : null}
     </div>
   );
